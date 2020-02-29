@@ -1,1 +1,0 @@
-Use extention `Settings Sync` to sync settings using Github Gists.
