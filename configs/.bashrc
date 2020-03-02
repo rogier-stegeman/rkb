@@ -8,7 +8,7 @@ case $- in
       *) return;;
 esac
 
-echo Welcome back Commander! o777
+echo Welcome back Commander! o7777
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
