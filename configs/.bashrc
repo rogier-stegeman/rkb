@@ -157,6 +157,10 @@ fi
 function rsudo {
     docker run -it -w '/mounted' --rm --name rsudo-container --volume $(pwd):/mounted registry.gitlab.com/r.stegeman/rkb/rsudo
 }
+# Function to create standard python container. Mounts cwd in /mounted but doesn't use it as default location.
+function rpython {
+    docker run -it --rm --name rpython-container --volume $(pwd):/mounted registry.gitlab.com/r.stegeman/rkb/rpython
+}
 
 
 if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
