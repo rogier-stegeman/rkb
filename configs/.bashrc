@@ -125,26 +125,89 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 # Aliases
 alias cd..="cd .."
 alias py="python3"
-pip() {
-  if [[ $@ == "freeze" ]]; then
-    command pip freeze | lolcat
-  else
-    command pip "$@"
-  fi
-}
-alias pip="echo 'Warning, pip defaults to pip2'&&pip"
-pip3() {
-  if [[ $@ == "freeze" ]]; then
-    command pip3 freeze | lolcat
-  else
-    command pip3 "$@"
-  fi
-}
+if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
+  alias RD="cd /hdd/hdd_one/shared/research_development"
+fi
+
+
+if [[ x`dpkg-query -l | grep lolcat | wc -l` != 0 ]]; then
+  pip() {
+    if [[ $@ == "freeze" ]]; then
+      command pip freeze | lolcat
+    else
+      command pip "$@"
+    fi
+  }
+
+
+  pip3() {
+    if [[ $@ == "freeze" ]]; then
+      command pip3 freeze | lolcat
+    else
+      command pip3 "$@"
+    fi
+  }
+fi
+
+if [[ x`pip --version` == *"python 2"* ]]; then
+  alias pip="echo 'Warning, pip defaults to pip2'&&pip"
+fi
 
 # Function to open current directory in a standard ubuntu container.
 function rsudo {
-    docker run -it -w '/mounted' --rm --name rsudo-container --volume $(pwd):/mounted ubuntu:latest
+    docker run -it -w '/mounted' --rm --name rsudo-container --volume $(pwd):/mounted registry.gitlab.com/r.stegeman/rkb/rsudo
 }
+
+
+if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
+  function rdmux() {
+      loc="/hdd/hdd_one/shared/research_development/tmuxs"
+      if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
+          echo "Custom tmux shortcuts command for Research and Development group."
+          echo "You can append -h, --help or simply help to most commands to get more info."
+          echo "You can append -c or --close to close the terminal after the command completes"
+          echo "Currently available commands:"
+          echo "  - new OR n"
+          echo "  - attach OR a"
+          echo "  - list OR ls"
+      elif [[ "$1" == "ls" ]] || [[ "$1" == "list" ]]; then
+          if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
+              echo "Lists all Tmux windows present in the custom tmux folder"
+          else
+              tmux -S $loc ls
+          fi
+      elif [[ "$1" == "new" ]] || [[ "$1" == "n" ]]; then
+          if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
+              echo "Creates a new Tmux session with provided name."
+              echo "Example:"
+              echo "  rdmux new TESTTMUX"
+          elif [[ -z  "$2" ]]; then
+              echo "Please provide a name for the new Tmux session."
+          else
+              tmux -f "/hdd/hdd_one/shared/research_development/.rdmux.conf" -S $loc new -s $2
+          fi
+      elif [[ "$1" == "attach" ]] || [[ "$1" == "a" ]]; then
+          if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
+              echo "Attach to an existing Tmux session with provided name."
+              echo "Example:"
+              echo "  rdmux attach TESTTMUX"
+          elif [[ -z  "$2" ]]; then
+              tmux -S $loc attach
+          else
+              tmux -S $loc attach -t $2
+          fi
+      fi
+
+      while [ $# -gt 0 ]
+      do
+          lastarg=$1
+          shift
+      done
+      if [[ "$lastarg" == "-c" ]] || [[ "$lastarg" == "--close" ]]; then
+          exit
+      fi
+  }
+fi
 
 # Aliases for following rgr() function.
 alias r=rgr
