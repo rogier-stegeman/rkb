@@ -1,5 +1,12 @@
 # Personal Knowledge Base
 
+## Setup
+Link file locations to the files in this repo:
+```bash
+ln configs/.bashrc ~/.bashrc
+ln configs/.tmux.conf ~/.tmux.conf
+```
+
 ## Container Registry
 This Gitlab Project also acts as Docker Container Registry.
 Dockerfiles are stored in `dockerfiles` and images are stored in Gitlab's Container Registry linked to this project.
