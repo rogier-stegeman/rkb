@@ -130,7 +130,7 @@ if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
 fi
 
 
-if [[ x`dpkg-query -l | grep lolcat | wc -l` != 0 ]]; then
+if command -v lolcat >/dev/null; then
   pip() {
     if [[ $@ == "freeze" ]]; then
       command pip freeze | lolcat
