@@ -3,8 +3,8 @@
 ## Setup
 Link file locations to the files in this repo:
 ```bash
-ln ~/[path-to-rkb]/configs/.bashrc ~/.bashrc
-ln ~/[path-to-rkb]/configs/.tmux.conf ~/.tmux.conf
+ln -s ~/[path-to-rkb]/configs/.bashrc ~
+ln -s ~/[path-to-rkb]/configs/.tmux.conf ~
 ```
 
 ## Container Registry
