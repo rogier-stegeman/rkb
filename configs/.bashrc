@@ -151,6 +151,7 @@ alias r=rgr
 alias roger=rgr
 alias robc="r o b c"
 alias rotc="r o t c"
+alias rosc="r o s c"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
