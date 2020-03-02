@@ -18,7 +18,7 @@ for item in iterable:
 
 ```python
 # Use
-my_list = [item for item in iterable if item <20]
+my_list = [item for item in iterable if item <10]
 ```
 
 </td>
