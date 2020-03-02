@@ -9,7 +9,8 @@ case $- in
 esac
 
 echo Welcome back Commander! o7
-echo RKB .bashrc Version 1.0.1
+echo RKB .bashrc Version 1.0.2
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -298,3 +299,7 @@ function rgr {
 export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ########              Had a space here ^ after the dash
+
+# Do not add anything below this line.
+# To customise or add anything to this file for a single machine, create a file called .bashrc.local in rkb/configs.
+[ -f "configs/.bashrc.local" ] && source "configs/.bashrc.local"
