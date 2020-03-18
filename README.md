@@ -22,7 +22,7 @@ Contains the knowledge I've gathered over the years. Often contains snippets.
 Notes related to this knowledge base in general.
 
 ### scripts
-Contains (generalised) scripts which I use often.
+Contains (generalised) scripts (and other files) which I use often.
 
 ### shortcuts
 Files with shortcuts because I can't remember them all.
