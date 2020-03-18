@@ -3,7 +3,6 @@ from flask import (Flask, copy_current_request_context, jsonify,
 import json
 import os
 import requests
-import uuid
 
 from logger import Logger
 import env 
@@ -21,7 +20,7 @@ def index():
 
 def main():
     """Start the script"""
-    logger.info("Starting ms-translation service")
+    logger.info("Starting Flask App")
     APP.run(host="0.0.0.0", port=os.getenv('PORT', '80'))
 
 
