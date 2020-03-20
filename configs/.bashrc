@@ -19,8 +19,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -218,9 +218,11 @@ fi
 # Aliases for following rgr() function.
 alias r=rgr
 alias roger=rgr
+alias ro="r o"
 alias robc="r o b c"
 alias rotc="r o t c"
 alias rosc="r o s c"
+alias rokbc="r o kb c"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
@@ -239,7 +241,7 @@ function rgr {
 	      echo "  -bashrc [b] (File where this function is programmed)"
 	      echo "  -ssh [s] (ssh config)"
 	      echo "Projects:"
-	      echo "  -rkb (r-knowledge-base)"
+	      echo "  -rkb [kb] (r-knowledge-base)"
 	      echo "  -test [t, testing, testing-grounds] (testing-grounds)"
 	      echo "  -int [i] (intelligent-entity-tagging)"
 	      echo "  -nmt [n] (neural-machine-translation)"
@@ -270,7 +272,7 @@ function rgr {
       systemctl suspend
       read -p "Press any key to see how long you've been away for."
       diff=$SECONDS
-      echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($diff / 3600) % 24) hours\n$(($diff / 60) % 60) minutes\n$(($diff % 60)) seconds."
+      echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($(($diff / 3600)) % 24)) hours\n$(($(($diff / 60)) % 60)) minutes\n$(($diff % 60)) seconds."
     fi
   elif [[ "$1" == "go" ]] || [[ "$1" == "g" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then

@@ -32,3 +32,11 @@ Remove the need to use sudo for a program/command:
 sudo groupadd [program eg docker]
 sudo gpasswd -a $USER [group eg docker]
 ```
+
+### Assorted terminal stuff
+Run command after x time:
+```bash
+# '&&' rather than '&' allows for cancellation with ^C.
+sleep 10s && python app.py
+sleep 4d 12h 30m 10s && python app.py
+```

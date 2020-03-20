@@ -43,8 +43,8 @@ class Logger():
         logger.addHandler(logger_handler)
         use_col = env.COL_LOGS
         if use_col:
-            formatter = ColorFormatter("%(asctime)s.%(msecs)03d : %(levelname)s : %(name)s : %(message)s", "%H-%M-%S")
+            formatter = ColorFormatter("%(asctime)s.%(msecs)03d : %(levelname)s : %(name)s : %(message)s", "%Y/%m/%d: %H-%M-%S")
         else:
-            formatter = logging.Formatter('%(asctime)s.%(msecs)03d : %(levelname)s : %(name)s : %(message)s', '%H-%M-%S')
+            formatter = logging.Formatter('%(asctime)s.%(msecs)03d : %(levelname)s : %(name)s : %(message)s', "%Y/%m/%d: %H-%M-%S")
         logger_handler.setFormatter(formatter)
         return logger
