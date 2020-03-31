@@ -126,6 +126,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 # Aliases
 alias cd..="cd .."
 alias py="python3"
+alias vue="~/.yarn/bin/vue"
 if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
   alias RD="cd /hdd/hdd_one/shared/research_development"
 fi
@@ -228,8 +229,9 @@ function rgr {
     echo "Currently available commands:"
     echo "  - open [o]"
     echo "  - sleep"
-    echo "  - go"
+    echo "  - go [g]"
     echo "  - up"
+    echo "  - update"
   elif [[ "$1" == "open" ]] || [[ "$1" == "o" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
         echo "Used to open applications and files. Currently available:"
@@ -237,6 +239,7 @@ function rgr {
 	      echo "  -bashrc [b] (File where this function is programmed)"
 	      echo "  -ssh [s] (ssh config)"
 	      echo "Projects:"
+	      echo "  -rkb (r-knowledge-base)"
 	      echo "  -test [t, testing, testing-grounds] (testing-grounds)"
 	      echo "  -int [i] (intelligent-entity-tagging)"
 	      echo "  -nmt [n] (neural-machine-translation)"
@@ -248,6 +251,8 @@ function rgr {
       fi
     elif [[ "$2" == "bashrc" ]] || [[ "$2" == "b" ]]; then
       code ~/.bashrc -n
+    elif [[ "$2" == "rkb" ]] || [[ "$2" == "kb" ]]; then
+      code ~/dev/personal/rkb -n
     elif [[ "$2" == "ssh" ]] || [[ "$2" == "s" ]]; then
       code ~/.ssh/config -n
     elif [[ "$2" == "test" ]] || [[ "$2" == "testing" ]] || [[ "$2" == "testing-grounds" ]] || [[ "$2" == "t" ]]; then
@@ -265,13 +270,13 @@ function rgr {
       systemctl suspend
       read -p "Press any key to see how long you've been away for."
       diff=$SECONDS
-      echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($diff / 3600)) hours\n$((($diff / 60) % 60)) minutes\n$(($diff % 60)) seconds."
+      echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($diff / 3600) % 24) hours\n$(($diff / 60) % 60) minutes\n$(($diff % 60)) seconds."
     fi
-  elif [[ "$1" == "go" ]]; then
+  elif [[ "$1" == "go" ]] || [[ "$1" == "g" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
       echo "Used to go to certain locations. Simply calls 'cd' Currently available:"
-      echo "  -dev"
-    elif [[ "$2" == "dev" ]]; then
+      echo "  -dev [d]"
+    elif [[ "$2" == "dev" ]] || [[ "$2" == "d" ]]; then
       cd ~/dev
     fi
   elif [[ "$1" == "up" ]]; then
@@ -286,6 +291,8 @@ function rgr {
       done
       cd $str
     fi
+  elif [[ "$1" == "update" ]]; then
+    source ~/.bashrc
   fi
   while [ $# -gt 0 ]
   do
