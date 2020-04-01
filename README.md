@@ -1,5 +1,5 @@
 # Personal Knowledge Base
-
+[Changelog](/CHANGELOG.md)
 ## Setup
 Link file locations to the files in this repo:
 ```bash
