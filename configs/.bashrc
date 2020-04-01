@@ -223,6 +223,7 @@ alias robc="r o b c"
 alias rotc="r o t c"
 alias rosc="r o s c"
 alias rokbc="r o kb c"
+alias rh="r h"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
@@ -234,6 +235,7 @@ function rgr {
     echo "  - go [g]"
     echo "  - up"
     echo "  - update"
+    echo "  - history [h]"
   elif [[ "$1" == "open" ]] || [[ "$1" == "o" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
         echo "Used to open applications and files. Currently available:"
@@ -278,8 +280,11 @@ function rgr {
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
       echo "Used to go to certain locations. Simply calls 'cd' Currently available:"
       echo "  -dev [d]"
+      echo "  -ssh [s]"
     elif [[ "$2" == "dev" ]] || [[ "$2" == "d" ]]; then
       cd ~/dev
+    elif [[ "$2" == "ssh" ]] || [[ "$2" == "s" ]]; then
+      cd ~/.ssh
     fi
   elif [[ "$1" == "up" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
@@ -295,6 +300,8 @@ function rgr {
     fi
   elif [[ "$1" == "update" ]]; then
     source ~/.bashrc
+  elif [[ "$1" == "history" ]] || [[ "$1" == "h" ]]; then
+    cat ~/.bash_history | grep "${@:2}"
   fi
   while [ $# -gt 0 ]
   do

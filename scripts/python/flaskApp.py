@@ -4,9 +4,9 @@ import json
 import os
 import requests
 
-from logger import Logger
 import env 
 
+from logger import Logger
 logger = Logger().getLogger("Client")
 
 APP = Flask(__name__, static_url_path='/static')
