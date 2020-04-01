@@ -1,10 +1,24 @@
 # Personal Knowledge Base
 [Changelog](/CHANGELOG.md)
 ## Setup
+No need to clone if you just want to use the information. To use the config files, follow the steps below.
+#### Create local bashrc file
 Link file locations to the files in this repo:
 ```bash
-ln -s ~/[path-to-rkb]/configs/.bashrc ~
-ln -s ~/[path-to-rkb]/configs/.tmux.conf ~
+touch [path-to-rkb]/configs/.bashrc.local
+ln -s [path-to-rkb]/configs/.bashrc.local ~
+ln -s [path-to-rkb]/configs/.bashrc ~
+ln -s [path-to-rkb]/configs/.tmux.conf ~
+```
+These will give an error if such a file already exists. You can decide seperately for each file wether to use your own or mine. For files with a .local extention you can place the (relevant) contents of your own file in the .local version after creating it with the `ln` command above, then removing the original and running the `ln` command again. Example:
+```bash
+>>>touch ~/dev/rkb/configs/.bashrc.local
+>>>ln -s ~/dev/rkb/configs/.bashrc.local ~
+>>>ln -s ~/dev/rkb/configs/.bashrc ~
+ln: failed to create symbolic link '/home/username/.bashrc.local': File exists
+>>>cat ~/.bashrc >> ~/.bashrc.local
+>>>mv ~/.bashrc ~/.bashrc.backup
+>>>ln -s ~/dev/rkb/configs/.bashrc ~
 ```
 
 ## Content

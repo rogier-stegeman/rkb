@@ -318,4 +318,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 
 # Do not add anything below this line.
 # To customise or add anything to this file for a single machine, create a file called .bashrc.local in rkb/configs.
-[ -f "configs/.bashrc.local" ] && source "configs/.bashrc.local"
+# Described in the RKB README
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
