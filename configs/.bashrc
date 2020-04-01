@@ -9,7 +9,7 @@ case $- in
 esac
 
 echo Welcome back Commander! o7
-echo RKB .bashrc Version 1.0.2
+echo RKB .bashrc Version 1.0.3
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
