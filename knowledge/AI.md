@@ -81,8 +81,6 @@ end
 end
 
 ```
-SL CLASS -->
-SL --> REG
 
 ## Glossary
 **ALBERT** A Light BERT
