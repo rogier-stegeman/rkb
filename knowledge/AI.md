@@ -71,10 +71,18 @@ REG[Regression]
 SL[Supervised Learning]
 UL[Unsupervised Learning]
 
-SL --> CLASS
-SL --> REG
+subgraph Supervised Learning
+subgraph Classification
+NN
+end
+subgraph Regression
+REG
+end
+end
 
 ```
+SL CLASS -->
+SL --> REG
 
 ## Glossary
 **ALBERT** A Light BERT
