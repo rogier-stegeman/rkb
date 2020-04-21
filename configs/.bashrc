@@ -222,6 +222,7 @@ alias ro="r o"
 alias robc="r o b c"
 alias rotc="r o t c"
 alias rosc="r o s c"
+alias rkb="r o kb c"
 alias rokbc="r o kb c"
 alias rh="r h"
 function rgr {
@@ -301,7 +302,13 @@ function rgr {
   elif [[ "$1" == "update" ]]; then
     source ~/.bashrc
   elif [[ "$1" == "history" ]] || [[ "$1" == "h" ]]; then
-    cat ~/.bash_history | grep "${@:2}"
+    if [[ $# -ne 2 ]]; then
+      echo How many lines?
+      read -p ">>>" his_nr
+      tail -n $his_nr ~/.bash_history
+    else
+      cat ~/.bash_history | grep "${@:2}"
+    fi
   fi
   while [ $# -gt 0 ]
   do

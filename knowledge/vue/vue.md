@@ -26,3 +26,25 @@ setRoute(model) {
     }
 }
 ```
+
+### Vuex pass parameters
+
+```javascript
+export default {
+    props: {
+        zootype: {
+            type: String,
+            required: false,
+            default: null
+        }
+    },
+    computed() {
+        // Does not work
+        zooFilters: state => state.zooFilters[this.zootype]
+        // Works
+        zooFilters() {
+            return this.$store.state.zooFilters[this.zootype]
+        }
+    },
+}
+```
