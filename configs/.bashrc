@@ -126,6 +126,8 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 # Aliases
 alias cd..="cd .."
 alias py="python3"
+alias python="python3"
+alias pip="pip3"
 alias vue="~/.yarn/bin/vue"
 if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
   alias RD="cd /hdd/hdd_one/shared/research_development"
@@ -224,6 +226,7 @@ alias rotc="r o t c"
 alias rosc="r o s c"
 alias rkb="r o kb c"
 alias rokbc="r o kb c"
+alias rofc="r o f c"
 alias rh="r h"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
@@ -248,6 +251,7 @@ function rgr {
 	      echo "  -test [t, testing, testing-grounds] (testing-grounds)"
 	      echo "  -int [i] (intelligent-entity-tagging)"
 	      echo "  -nmt [n] (neural-machine-translation)"
+	      echo "  -firenze [f] (firenze-core)"
     elif [[ "$2" == "jmeter" ]] || [[ "$2" == "j" ]]; then
       if [[ "$3" == "-d" ]]; then
         command gnome-terminal -- sh ~/Downloads/apache-jmeter-5.1.1/bin/jmeter.sh
@@ -266,6 +270,8 @@ function rgr {
       code ~/dev/intelligent-entity-tagging -n
     elif [[ "$2" == "nmt" ]] || [[ "$2" == "n" ]]; then
       code ~/dev/neural-machine-translation -n
+    elif [[ "$2" == "firenze" ]] || [[ "$2" == "f" ]]; then
+      code ~/dev/projects/firenze-core -n
     fi
   elif [[ "$1" == "sleep" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
