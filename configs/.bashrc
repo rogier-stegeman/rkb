@@ -220,14 +220,15 @@ fi
 # Aliases for following rgr() function.
 alias r=rgr
 alias roger=rgr
-alias ro="r o"
-alias robc="r o b c"
-alias rotc="r o t c"
-alias rosc="r o s c"
-alias rkb="r o kb c"
-alias rokbc="r o kb c"
-alias rofc="r o f c"
-alias rh="r h"
+alias ro="rgr o"
+alias robc="rgr o b c"
+alias rotc="rgr o t c"
+alias rosc="rgr o s c"
+alias rkb="rgr o kb c"
+alias rokbc="rgr o kb c"
+alias rofc="rgr o f c"
+alias rh="rgr h"
+alias rmon="rgr mon"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
@@ -315,6 +316,20 @@ function rgr {
     else
       cat ~/.bash_history | grep "${@:2}"
     fi
+  elif [[ "$1" == "monitor" || "$1" == "mon" ]]; then
+    smi_processes=$(nvidia-smi pmon -c 1 | wc -l)
+    smi_height=$((${smi_processes} + 5))
+    tmux \
+      new-session  'htop' \; \
+      split-window -h 'nvidia-smi -l 1' \; \
+      split-window -v \; \
+      split-window -v 'xdotool key F11'\; \
+      select-pane -t 1 \; \
+      resize-pane -y $smi_height \; \
+      select-pane -t 2 \;
+    read -p "Press Return to exit fullscreen"
+    xdotool key F11
+
   fi
   while [ $# -gt 0 ]
   do
