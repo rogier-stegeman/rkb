@@ -33,6 +33,12 @@ sudo groupadd [program eg docker]
 sudo gpasswd -a $USER [group eg docker]
 ```
 
+### Finding stuff
+Search whole system:
+```bash
+sudo find / -name "search-query"
+```
+
 ### Assorted terminal stuff
 Run command after x time:
 ```bash
