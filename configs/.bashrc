@@ -283,6 +283,7 @@ function rgr {
       read -p "Press any key to see how long you've been away for, and to fix the desktop wallpaper."
       diff=$SECONDS
       echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($(($diff / 3600)) % 24)) hours\n$(($(($diff / 60)) % 60)) minutes\n$(($diff % 60)) seconds."
+      arandr ~/.screenlayout/intern-screen-heist-backup.sh
       gsettings set org.gnome.desktop.background picture-options wallpaper
     fi
   elif [[ "$1" == "go" ]] || [[ "$1" == "g" ]]; then
