@@ -25,6 +25,31 @@ my_list = [item for item in iterable if item <10]
 </tr>
 </table>
 
+#### Dictionary comprehension:
+<table>
+<tr>
+<td>
+
+```python
+# Instead of
+my_dict = {}
+for k, v in orgiginal_dict.items():
+    if v < 10:
+        my_dict[k] = v
+```
+
+</td>
+<td>
+
+```python
+# Use
+my_dict = {k: v for (k, v) in original_dict.items() if v < 10}
+```
+
+</td>
+</tr>
+</table>
+
 #### Generator comprehension:
 Works the same way as list comprehensions but with parantheses: 
 ```python
