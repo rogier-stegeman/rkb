@@ -1,3 +1,6 @@
+To add cell to VSCode Python file, type:
+`#%%`
+
 Delete folder:
 ```python
 import shutil
