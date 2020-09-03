@@ -157,7 +157,7 @@ alias rm="saferm"
 saferm() {
   for arg in $@:
   do
-    if [[ "$arg" == "/:" || "$arg" == "/" ]]; then
+    if [[ "$arg" == "/:" || "$arg" == "/" || "$arg" == "*" || "$arg" == "/*" || "$arg" == "*/" || "$arg" == "*:" || "$arg" == "/*:" || "$arg" == "*/:" ]]; then
       echo "roger roger, deleting entire filesys-"
       echo "No no no no no"
       echo "I suggest you check your command again"
