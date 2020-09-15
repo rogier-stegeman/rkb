@@ -1,11 +1,12 @@
 # Personal Knowledge Base
-[Changelog](/CHANGELOG.md)
 ## Setup
 No need to clone if you just want to use the information. To use the config files, follow the steps below.
 #### Create local bashrc file
 Link file locations to the files in this repo:
 ```bash
-touch [path-to-rkb]/configs/.bashrc.local
+cd [path-to-rkb]/configs
+touch .bashrc.local
+cd ~ 
 ln -s [path-to-rkb]/configs/.bashrc.local ~
 ln -s [path-to-rkb]/configs/.bashrc ~
 ln -s [path-to-rkb]/configs/.tmux.conf ~
