@@ -126,6 +126,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 # Aliases
 alias cd..="cd .."
 alias py="python3"
+alias "code."="code ."
 alias python="python3"
 alias pip="pip3"
 alias vue="~/.yarn/bin/vue"
@@ -298,7 +299,7 @@ function rgr {
       diff=$SECONDS
       echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($(($diff / 3600)) % 24)) hours\n$(($(($diff / 60)) % 60)) minutes\n$(($diff % 60)) seconds."
       # arandr ~/.screenlayout/intern-screen-heist-backup.sh
-      gsettings set org.gnome.desktop.background picture-options wallpaper
+      # gsettings set org.gnome.desktop.background picture-options wallpaper
     fi
   elif [[ "$1" == "go" ]] || [[ "$1" == "g" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
