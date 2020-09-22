@@ -9,7 +9,7 @@ case $- in
 esac
 
 echo Welcome back Commander! o7
-echo RKB .bashrc Version 1.0.5
+echo RKB .bashrc Version 1.0.6
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -127,6 +127,8 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 alias cd..="cd .."
 alias py="python3"
 alias "code."="code ."
+alias "code. -d"="code . && exit"
+alias "code . -d"="code . && exit"
 alias python="python3"
 alias pip="pip3"
 alias vue="~/.yarn/bin/vue"
