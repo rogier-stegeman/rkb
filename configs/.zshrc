@@ -76,6 +76,7 @@ plugins=(git
          rake
          zsh-syntax-highlighting
          history-substring-search
+         z
          zsh-autosuggestions
 )
 
@@ -108,11 +109,15 @@ source $ZSH/oh-my-zsh.sh
 
 #### Custom RKB ####
 
+autoload -Uz zcalc
+
 # Aliases
+alias calc="zcalc"
 alias cd..="cd .."
 alias py="python3"
 alias python="python3"
 alias "code."="code ."
+alias "code. -d"="code . && exit"
 alias "code . -d"="code . && exit"
 alias pip="pip3"
 alias vue="~/.yarn/bin/vue"
