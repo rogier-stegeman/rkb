@@ -1,5 +1,5 @@
 echo Welcome back Commander! o7
-echo RKB .zshrc Version 1.0.0
+echo RKB .zshrc Version 1.0.1
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -106,6 +106,9 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 #### Custom RKB ####
 
@@ -285,7 +288,7 @@ function rgr {
     elif [ -z "$2"]; then
       SECONDS=0
       systemctl suspend
-      read -p "Press any key to see how long you've been away for, and to fix the desktop wallpaper."
+      read "?Press any key to see how long you've been away for, and to fix the desktop wallpaper."
       diff=$SECONDS
       echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($(($diff / 3600)) % 24)) hours\n$(($(($diff / 60)) % 60)) minutes\n$(($diff % 60)) seconds."
       gsettings set org.gnome.desktop.background picture-options wallpaper
@@ -316,8 +319,8 @@ function rgr {
     source ~/.zshrc
   elif [[ "$1" == "history" ]] || [[ "$1" == "h" ]]; then
     if [[ $# -ne 2 ]]; then
-      echo How many lines?
-      read -p ">>>" his_nr
+      echo "How many lines?"
+      read "his_nr?>>>"
       tail -n $his_nr ~/.zsh_history
     else
       cat ~/.zsh_history | grep "${@:2}"
@@ -327,13 +330,15 @@ function rgr {
     smi_height=$((${smi_processes} + 5))
     tmux \
       new-session  'htop' \; \
-      split-window -h 'nvidia-smi -l 1' \; \
-      split-window -v \; \
+      split-window -h 'zsh' \; \
+      select-pane -t 0 \; \
+      split-window -vl $smi_height 'nvtop'\; \
+      resize-pane -t 0 -y $smi_height \; \
+      select-pane -t 2 \; \
+      split-window -vbl $smi_height 'nvidia-smi -l 1' \; \
       split-window -v 'xdotool key F11'\; \
-      select-pane -t 1 \; \
-      resize-pane -y $smi_height \; \
-      select-pane -t 2 \;
-    read -p "Press Return to exit fullscreen"
+      select-pane -t 4 \;
+    read "?Press Return to exit fullscreen"
     xdotool key F11
 
   fi
