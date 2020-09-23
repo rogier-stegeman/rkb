@@ -14,7 +14,7 @@ When dealing with Artificial Intelligence, Machine Learning, Deep Leaning, Neura
 [References](#references)
 
 ## Notice
-RIP Mermaid diagrams after moving to Github
+RIP Mermaid diagrams after moving to Github.
 
 ## Introduction
 
