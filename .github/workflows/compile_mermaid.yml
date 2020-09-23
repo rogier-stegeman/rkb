@@ -1,0 +1,7 @@
+name: Compile Mermaid Markdown
+    uses: neenjaw/compile-mermaid-markdown-action@0.2.3
+    on:
+    push:
+        paths:
+        - '**/*.mermaid'
+        - '**/*.md'

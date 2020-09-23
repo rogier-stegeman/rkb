@@ -13,6 +13,9 @@ When dealing with Artificial Intelligence, Machine Learning, Deep Leaning, Neura
 [Glossary](#glossary)
 [References](#references)
 
+## Notice
+RIP Mermaid diagrams after moving to Github
+
 ## Introduction
 
 Artificial Intelligence (AI) is a very broad term which can be used whenever we want to simulate any level of intelligence in machines. This could range from a pile of if-statements to perfectly copying human behaviour.
