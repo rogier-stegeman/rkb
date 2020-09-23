@@ -22,8 +22,8 @@ Artificial Intelligence (AI) is a very broad term which can be used whenever we 
 Machine Learning (ML) is a subset of AI which is able to adapt or change, without human interference, when fed data. When all goes according to plan we can call this change *learning*.
 
 ```mermaid
-graph TD;
-  AI[Artificial Intelligence] --> ML[Machine Learning] --> DL[Deep Learning];
+graph TD
+  AI[Artificial Intelligence] --> ML[Machine Learning] --> DL[Deep Learning]
 ```
 
 When we talk about Deep Learning (DL) we usually refer to Deep Artificial Neural Networks (Deep NN). This is basically a way to differentiate simple Neural Networks (NN) from complex ones. Usually we call NN's with more than one hidden layer Deep NN's. Deep NN's use more layers and/or computations which gives them the potential to learn more (complex) features at the expense of a higher computational intensity.
@@ -60,32 +60,31 @@ Hypothesis function:
 ### AI Family Tree
 
 ```mermaid
-graph TD;
-  AI[Artificial Intelligence];
-  ML[Machine Learning];
-  DL[Deep Learning];
+graph TD
+  AI[Artificial Intelligence]
+  ML[Machine Learning]
+  DL[Deep Learning]
 
-  ALBERT[ALBERT];
-  BERT[BERT];
-  CLASS[Classification];
-  DANN[Deep Artificial Neural Networks];
-  DRL[Deep Reinforcement Learning];
-  FFNN[Feed-Forward Neural Networks];
-  NN[Neural Network];
-  RL[Reinforcement Learning];
-  REG[Regression];
-  SL[Supervised Learning];
-  UL[Unsupervised Learning];
+  ALBERT[ALBERT]
+  BERT[BERT]
+  CLASS[Classification]
+  DANN[Deep Artificial Neural Networks]
+  DRL[Deep Reinforcement Learning]
+  FFNN[Feed-Forward Neural Networks]
+  NN[Neural Network]
+  RL[Reinforcement Learning]
+  REG[Regression]
+  SL[Supervised Learning]
+  UL[Unsupervised Learning]
 
-  subgraph Supervised Learning;
-  subgraph Classification;
-  NN;
-  end;
-  subgraph Regression;
-  REG;
-  end;
-  end;
-
+  subgraph Supervised Learning
+    subgraph Classification
+      NN
+    end
+    subgraph Regression
+      REG
+    end
+  end
 ```
 
 ## Glossary
