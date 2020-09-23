@@ -36,7 +36,7 @@ graph TD
 
 When we talk about Deep Learning (DL) we usually refer to Deep Artificial Neural Networks (Deep NN). This is basically a way to differentiate simple Neural Networks (NN) from complex ones. Usually we call NN's with more than one hidden layer Deep NN's. Deep NN's use more layers and/or computations which gives them the potential to learn more (complex) features at the expense of a higher computational intensity.
 
-ML can be further divided into supervised learning, unsupervised learning and reinforcement learning. Supervised learning can be broken up into classification and regression. Classification is the assigning of classes (e.g. predicted lung disease) and regression will give a number (e.g. predicted house price).
+ML can be further divided into supervised learning, unsupervised learning and reinforcement learning. Supervised learning can be broken up into classification and regression. Classification is the assigning of classes (e.g. predicted lung disease) and regression will give a non-categorical number (e.g. predicted house price). Unsupervised learning is also known as clustering.
 
 One of the most basic machine learning algorithms, which almost everyone starts with, is linear regression.
 
@@ -60,7 +60,7 @@ Hypothesis function:
 > 
 > Example:
 >
->> predicted house price(house features) = weight 1 * nr of bedrooms + weight 2 * square feet + weight 3 * house age
+>> predicted house price(house features) = weight_1 * nr of bedrooms + weight_2 * square feet + weight_3 * house age
 
 
 
@@ -74,28 +74,49 @@ Hypothesis function:
 
 ```mermaid
 graph TD
-  AI[Artificial Intelligence]
-  ML[Machine Learning]
+  %% High Level
+  %% AI[Artificial Intelligence]
+  %% CLASS[Classification]
   DL[Deep Learning]
+  ML[Machine Learning]
+  RL[Reinforcement Learning]
+  %% SL[Supervised Learning]
+  %% UL[Unsupervised Learning]
 
+  %% Architectures
   ALBERT[ALBERT]
+  BB[BioBert]
   BERT[BERT]
-  CLASS[Classification]
   DANN[Deep Artificial Neural Networks]
+  DT[Decision Tree]
   DRL[Deep Reinforcement Learning]
   FFNN[Feed-Forward Neural Networks]
+  LR[Linear Regression]
+  HC[Hierarchical Clustering]
+  HMM[Hidden Markov Models]
+  KC[K-Means Clustering]
   NN[Neural Network]
-  RL[Reinforcement Learning]
-  REG[Regression]
-  SL[Supervised Learning]
-  UL[Unsupervised Learning]
-
+  SVM[Support Vector Machine]
+  DL
+  DL
+  DL
+  subgraph Unsupervised Learning
+    HC
+    KC
+    HMM
+    
+  end
+  
   subgraph Supervised Learning
-    subgraph Classification
-      NN
+    subgraph Classifiction
+      SVM
+      DT
     end
     subgraph Regression
-      REG
+      LR
+    end
+    subgraph Both
+      NN
     end
   end
 ```
