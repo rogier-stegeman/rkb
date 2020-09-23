@@ -41,7 +41,7 @@ ML can be further divided into supervised learning, unsupervised learning and re
 One of the most basic machine learning algorithms, which almost everyone starts with, is linear regression.
 
 ## Concepts
-In this section some concepts will be explained in greated detail.
+In this section some concepts will be explained in greater detail.
 
 ### Reinforcement Learning
 %TODO
