@@ -133,18 +133,18 @@ fi
 if command -v lolcat >/dev/null; then
   function pip() {
     if [[ $@ == "freeze" ]]; then
-      command pip freeze | lolcat
+      command python -m pip freeze | lolcat
     else
-      command pip "$@"
+      command python -m pip "$@"
     fi
   }
 
 
   function pip3() {
     if [[ $@ == "freeze" ]]; then
-      command pip3 freeze | lolcat
+      command python3 -m pip freeze | lolcat
     else
-      command pip3 "$@"
+      command python3 -m pip "$@"
     fi
   }
 fi
@@ -328,16 +328,27 @@ function rgr {
   elif [[ "$1" == "monitor" || "$1" == "mon" ]]; then
     smi_processes=$(nvidia-smi pmon -c 1 | wc -l)
     smi_height=$((${smi_processes} + 5))
-    tmux \
-      new-session  'htop' \; \
-      split-window -h 'zsh' \; \
-      select-pane -t 0 \; \
-      split-window -vl $smi_height 'nvtop'\; \
-      resize-pane -t 0 -y $smi_height \; \
-      select-pane -t 2 \; \
-      split-window -vbl $smi_height 'nvidia-smi -l 1' \; \
-      split-window -v 'xdotool key F11'\; \
-      select-pane -t 4 \;
+    echo $1
+    if [[ "$2" == "v" || "$2" == "-v" ]]; then
+      tmux \
+        new-session  'htop' \; \
+        split-window -v 'nvtop'\; \
+        split-window -v 'zsh'\; \
+        split-window -vlb $smi_height 'nvidia-smi -l 1'\; \
+        split-window -v 'xdotool key F11'\; \
+        select-pane -t 2 \;
+    else
+      tmux \
+        new-session  'htop' \; \
+        split-window -h 'zsh' \; \
+        select-pane -t 0 \; \
+        split-window -vl $smi_height 'nvtop'\; \
+        resize-pane -t 0 -y $smi_height \; \
+        select-pane -t 2 \; \
+        split-window -vbl $smi_height 'nvidia-smi -l 1' \; \
+        split-window -v 'xdotool key F11'\; \
+        select-pane -t 4 \;
+    fi
     read "?Press Return to exit fullscreen"
     xdotool key F11
 
