@@ -291,6 +291,7 @@ function rgr {
       read "?Press any key to see how long you've been away for, and to fix the desktop wallpaper."
       diff=$SECONDS
       echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($(($diff / 3600)) % 24)) hours\n$(($(($diff / 60)) % 60)) minutes\n$(($diff % 60)) seconds."
+      gsettings set org.gnome.desktop.background picture-options none
       gsettings set org.gnome.desktop.background picture-options wallpaper
     fi
   elif [[ "$1" == "go" ]] || [[ "$1" == "g" ]]; then
