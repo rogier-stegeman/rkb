@@ -240,6 +240,8 @@ alias rokbc="rgr o kb c"
 alias rofc="rgr o f c"
 alias rh="rgr h"
 alias rmon="rgr mon"
+alias tr="rgr tr"
+alias trc="rgr tr -c"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
@@ -252,6 +254,7 @@ function rgr {
     echo "  - up"
     echo "  - update"
     echo "  - history [h]"
+    echo "  - translate [t]"
   elif [[ "$1" == "open" ]] || [[ "$1" == "o" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
         echo "Used to open applications and files. Currently available:"
@@ -328,16 +331,21 @@ function rgr {
     fi
   elif [[ "$1" == "monitor" || "$1" == "mon" ]]; then
     smi_processes=$(nvidia-smi pmon -c 1 | wc -l)
-    smi_height=$((${smi_processes} + 5))
-    echo $1
+    smi_height=$((${smi_processes} + 6))
+    smi_height2=$(($smi_height - 7))
     if [[ "$2" == "v" || "$2" == "-v" ]]; then
       tmux \
         new-session  'htop' \; \
         split-window -v 'nvtop'\; \
-        split-window -v 'zsh'\; \
-        split-window -vlb $smi_height 'nvidia-smi -l 1'\; \
-        split-window -v 'xdotool key F11'\; \
-        select-pane -t 2 \;
+        split-window -v 'xdotool key F11 && zsh' \; \
+        select-pane -t 0 \; \
+        split-window -vbl $smi_height2 'nvidia-smi -l 1' \; \
+        select-pane -t 3 \;
+        
+        # split-window -v 'xdotool key F11'\; \
+        # select-pane -t 1 \;
+        # split-window -vl $smi_height 'nvidia-smi -l 1' \; \
+        # select-pane -t 2 \;
     else
       tmux \
         new-session  'htop' \; \
@@ -352,7 +360,14 @@ function rgr {
     fi
     read "?Press Return to exit fullscreen"
     xdotool key F11
-
+  elif [[ "$1" == "translate" || "$1" == "t" || "$1" == "tr" ]]; then
+    optional="$2"
+    if [[ "$optional" == "-c" ]] || [[ "$optional" == "c" ]] ||[[ "$optional" == "--close" ]]; then
+      google-chrome "https://translate.google.nl/?source=osdd#auto|auto|${@:3}" >/dev/null 2>&1
+      exit
+    else
+      google-chrome "https://translate.google.nl/?source=osdd#auto|auto|${@:2}" >/dev/null 2>&1
+    fi
   fi
   while [ $# -gt 0 ]
   do
