@@ -1,5 +1,13 @@
 echo Welcome back Commander! o7
 echo RKB .zshrc Version 1.0.1
+if [ -f "/tmp/daily-fortune.txt" ]; then
+  echo ""
+  echo Your daily fortune:
+  cat /tmp/daily-fortune.txt | lolcat
+  rm /tmp/daily-fortune.txt
+fi
+
+# gnome-terminal --geometry=80x10+x+y --zoom=2 --command="your program"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -290,7 +298,8 @@ function rgr {
         echo "Calls systemctl suspend"
     elif [ -z "$2"]; then
       SECONDS=0
-      systemctl suspend
+      echo "No time to rest!"
+      # systemctl suspend
       read "?Press any key to see how long you've been away for, and to fix the desktop wallpaper."
       diff=$SECONDS
       echo -e "Welcome back! You have been gone for:\n$(($diff / 86400)) days\n$(($(($diff / 3600)) % 24)) hours\n$(($(($diff / 60)) % 60)) minutes\n$(($diff % 60)) seconds."
