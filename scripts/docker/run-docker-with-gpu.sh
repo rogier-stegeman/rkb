@@ -10,7 +10,7 @@ docker run -p 9360:80 \
     -v $(pwd):/app \
     --gpus all \
     --name [container-name] \
-    embert 
+    [image-name]
 
 echo To enter the container run:
 echo docker exec -it [container-name] bash

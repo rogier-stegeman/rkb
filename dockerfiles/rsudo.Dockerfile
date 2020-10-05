@@ -14,6 +14,4 @@ FROM python:3.6-buster
 RUN apt-get update && \
     apt-get install nano
 
-RUN touch test.txt
-
 CMD ["/bin/bash"]
