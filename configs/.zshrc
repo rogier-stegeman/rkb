@@ -1,10 +1,13 @@
 echo Welcome back Commander! o7
 echo RKB .zshrc Version 1.0.1
-if [ -f "/tmp/daily-fortune.txt" ]; then
-  echo ""
-  echo Your daily fortune:
-  cat /tmp/daily-fortune.txt | lolcat
-  rm /tmp/daily-fortune.txt
+
+if [[ -o interactive ]]; then
+  if [ -f "/tmp/daily-fortune.txt" ]; then
+    echo ""
+    echo Your daily fortune:
+    cat /tmp/daily-fortune.txt | lolcat
+    rm /tmp/daily-fortune.txt
+  fi
 fi
 
 # gnome-terminal --geometry=80x10+x+y --zoom=2 --command="your program"
