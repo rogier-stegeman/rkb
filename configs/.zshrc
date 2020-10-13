@@ -375,10 +375,14 @@ function rgr {
   elif [[ "$1" == "translate" || "$1" == "t" || "$1" == "tr" ]]; then
     optional="$2"
     if [[ "$optional" == "-c" ]] || [[ "$optional" == "c" ]] ||[[ "$optional" == "--close" ]]; then
-      google-chrome "https://translate.google.nl/?source=osdd#auto|auto|${@:3}" >/dev/null 2>&1
+      pat=${@:3}
+      pat="${pat// /%20}"
+      google-chrome "https://translate.google.nl/?source=osdd#auto|auto|$pat" >/dev/null 2>&1
       exit
     else
-      google-chrome "https://translate.google.nl/?source=osdd#auto|auto|${@:2}" >/dev/null 2>&1
+      pat=${@:2}
+      pat="${pat// /%20}"
+      google-chrome "https://translate.google.nl/?source=osdd#auto|auto|$pat" >/dev/null 2>&1
     fi
   fi
   while [ $# -gt 0 ]
