@@ -238,19 +238,27 @@ if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
   }
 fi
 
+# rgr variables
+timer_on=false
+# rgr helper functions
+function timer_int() {
+  timer_on=false
+}
+
 # Aliases for following rgr() function.
+alias disc="r o disc -c"
 alias r=rgr
-alias roger=rgr
+alias rh="rgr h"
+alias rkb="rgr o kb c"
+alias rmon="rgr mon"
 alias ro="rgr o"
 alias robc="rgr o b c"
-alias rozc="rgr o z c"
-alias rotc="rgr o t c"
-alias rosc="rgr o s c"
-alias rkb="rgr o kb c"
-alias rokbc="rgr o kb c"
 alias rofc="rgr o f c"
-alias rh="rgr h"
-alias rmon="rgr mon"
+alias roger=rgr
+alias rokbc="rgr o kb c"
+alias rosc="rgr o s c"
+alias rotc="rgr o t c"
+alias rozc="rgr o z c"
 alias tr="rgr tr"
 alias trc="rgr tr -c"
 function rgr {
@@ -272,6 +280,7 @@ function rgr {
 	      echo "  -bashrc [b] (File where this function is programmed)"
 	      echo "  -zshrc [z] (File where this function is programmed)"
 	      echo "  -ssh [s] (ssh config)"
+        echo "  -discord [d, disc] (discord browser window)"
 	      echo "Projects:"
 	      echo "  -rkb [kb] (r-knowledge-base)"
 	      echo "  -test [t, testing, testing-grounds] (testing-grounds)"
@@ -289,6 +298,8 @@ function rgr {
       code ~/.ssh/config -n
     elif [[ "$2" == "test" ]] || [[ "$2" == "testing" ]] || [[ "$2" == "testing-grounds" ]] || [[ "$2" == "t" ]]; then
       code ~/dev/testing-grounds
+    elif [[ "$2" == "discord" ]] || [[ "$2" == "disc" ]] || [[ "$2" == "d" ]]; then
+      firefox --new-window "https://discord.com/channels/@me"
     elif [[ "$2" == "int" ]] || [[ "$2" == "i" ]]; then
       code ~/dev/intelligent-entity-tagging -n
     elif [[ "$2" == "nmt" ]] || [[ "$2" == "n" ]]; then
@@ -383,6 +394,21 @@ function rgr {
       pat=${@:2}
       pat="${pat// /%20}"
       google-chrome "https://translate.google.nl/?source=osdd#auto|auto|$pat" >/dev/null 2>&1
+    fi
+  elif [[ "$1" == "timer" ]]; then
+    trap timer_int INT
+    timer_on=true
+    if [[ $# -ne 2 ]]; then
+      date1=`date +%s`
+      days=$(( $(($(date +%s) - date1)) / 86400 ))
+      while $timer_on; do 
+        days=$(( $(($(date +%s) - date1)) / 86400 ))
+        echo -ne "$days day(s) and $(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
+        sleep 0.1
+        done
+      echo -e "\b\b$days day(s) and $(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
+    else
+      echo not implemented yet
     fi
   fi
   while [ $# -gt 0 ]
