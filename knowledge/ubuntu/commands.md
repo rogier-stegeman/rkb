@@ -9,6 +9,22 @@ Flags:
     -R recursive search
 ```
 
+Find files:
+```
+fdfind [options] [pattern] [location]
+    -d [max depth]  Max directory depth to search in.
+    -e [ext]    Find files of certain file extention only.
+    -H Also search for hidden directories/files.
+    -t [types]      Types to search for. (fdlxe)
+```
+Example:
+`fdfind -d 4 -e png -H -t f "month-[0-9]{1,2}-day-[0-9]{1,2}" ~/dev` or 
+` fdfind month-05 /`
+return:
+`/home/[user]/dev/data/month-05-day-03.png`
+`/home/[user]/dev/data/month-05-day-24.png`
+
+
 Get file sizes:
 ```bash
 du -sh *
