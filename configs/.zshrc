@@ -128,6 +128,7 @@ autoload -Uz zcalc
 # Aliases
 alias calc="zcalc"
 alias cd..="cd .."
+alias fd=fdfind
 alias py="python3"
 alias python="python3"
 alias pick="pick-colour-picker"
