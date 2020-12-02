@@ -137,8 +137,8 @@ alias "code. -d"="code . && exit"
 alias "code . -d"="code . && exit"
 alias pip="pip3"
 alias vue="~/.yarn/bin/vue"
-if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
-  alias RD="cd /hdd/hdd_one/shared/research_development"
+if [[ -d "/hdd/hdd_one/projects/" ]]; then
+  alias RD="cd /hdd/hdd_one/projects"
 fi
 
 
