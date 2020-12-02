@@ -249,6 +249,7 @@ function timer_int() {
 # Aliases for following rgr() function.
 alias disc="r o disc -c"
 alias r=rgr
+alias rdu="rgr du"
 alias rh="rgr h"
 alias rkb="rgr o kb c"
 alias rmon="rgr mon"
@@ -262,6 +263,7 @@ alias rotc="rgr o t c"
 alias rozc="rgr o z c"
 alias tr="rgr tr"
 alias trc="rgr tr -c"
+alias rvenv="rgr venv"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
@@ -275,6 +277,7 @@ function rgr {
     echo "  - update"
     echo "  - history [h]"
     echo "  - translate [t]"
+    echo "  - du"
   elif [[ "$1" == "open" ]] || [[ "$1" == "o" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
         echo "Used to open applications and files. Currently available:"
@@ -410,6 +413,15 @@ function rgr {
       echo -e "\b\b$days day(s) and $(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
     else
       echo not implemented yet
+    fi
+  elif [[ "$1" == "du" ]]; then
+    du -sh * | sort -rh
+  elif [[ "$1" == "venv" ]]; then
+    if [ -d "./venv" ]; then
+      source ./venv/bin/activate
+    else
+      python -m virtualenv venv
+      source ./venv/bin/activate
     fi
   fi
   while [ $# -gt 0 ]
