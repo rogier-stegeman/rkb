@@ -163,6 +163,7 @@ fi
 
 alias rm="saferm"
 function saferm() {
+  echo "place -r at the end"
   for arg in $@:
   do
     if [[ "$arg" == "/:" || "$arg" == "/" || "$arg" == "*" || "$arg" == "/*" || "$arg" == "*/" || "$arg" == "*:" || "$arg" == "/*:" || "$arg" == "*/:" ]]; then
