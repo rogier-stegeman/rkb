@@ -279,6 +279,7 @@ function rgr {
     echo "  - history [h]"
     echo "  - translate [t]"
     echo "  - du"
+    echo "  -s py"
   elif [[ "$1" == "open" ]] || [[ "$1" == "o" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
         echo "Used to open applications and files. Currently available:"
@@ -424,6 +425,8 @@ function rgr {
       python -m virtualenv venv
       source ./venv/bin/activate
     fi
+  elif [[ "$1" == "spy" ]]; then
+    sudo cat /home/*/.zsh_history | grep "${@:2}"
   fi
   while [ $# -gt 0 ]
   do
