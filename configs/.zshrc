@@ -426,6 +426,9 @@ function rgr {
       source ./venv/bin/activate
     fi
   elif [[ "$1" == "spy" ]]; then
+    echo BASH
+    sudo cat /home/*/.bash_history | grep "${@:2}"
+    echo ZSH
     sudo cat /home/*/.zsh_history | grep "${@:2}"
   fi
   while [ $# -gt 0 ]
