@@ -137,8 +137,8 @@ alias "code. -d"="code . && exit"
 alias "code . -d"="code . && exit"
 alias pip="pip3"
 alias vue="~/.yarn/bin/vue"
-if [[ -d "/hdd/hdd_one/shared/research_development" ]]; then
-  alias RD="cd /hdd/hdd_one/shared/research_development"
+if [[ -d "/hdd/hdd_one/projects/" ]]; then
+  alias RD="cd /hdd/hdd_one/projects"
 fi
 
 
@@ -163,6 +163,7 @@ fi
 
 alias rm="saferm"
 function saferm() {
+  echo "place -r at the end"
   for arg in $@:
   do
     if [[ "$arg" == "/:" || "$arg" == "/" || "$arg" == "*" || "$arg" == "/*" || "$arg" == "*/" || "$arg" == "*:" || "$arg" == "/*:" || "$arg" == "*/:" ]]; then
@@ -249,6 +250,7 @@ function timer_int() {
 # Aliases for following rgr() function.
 alias disc="r o disc -c"
 alias r=rgr
+alias rdu="rgr du"
 alias rh="rgr h"
 alias rkb="rgr o kb c"
 alias rmon="rgr mon"
@@ -262,6 +264,7 @@ alias rotc="rgr o t c"
 alias rozc="rgr o z c"
 alias tr="rgr tr"
 alias trc="rgr tr -c"
+alias rvenv="rgr venv"
 function rgr {
   if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "help" ]] || [[ "$1" == "" ]]; then
     echo "Personal commands by Roger."
@@ -275,6 +278,8 @@ function rgr {
     echo "  - update"
     echo "  - history [h]"
     echo "  - translate [t]"
+    echo "  - du"
+    echo "  -s py"
   elif [[ "$1" == "open" ]] || [[ "$1" == "o" ]]; then
     if [[ "$2" == "-h" ]] || [[ "$2" == "--help" ]] || [[ "$2" == "help" ]]; then
         echo "Used to open applications and files. Currently available:"
@@ -411,6 +416,20 @@ function rgr {
     else
       echo not implemented yet
     fi
+  elif [[ "$1" == "du" ]]; then
+    du -sh * | sort -rh
+  elif [[ "$1" == "venv" ]]; then
+    if [ -d "./venv" ]; then
+      source ./venv/bin/activate
+    else
+      python -m virtualenv venv
+      source ./venv/bin/activate
+    fi
+  elif [[ "$1" == "spy" ]]; then
+    echo BASH
+    sudo cat /home/*/.bash_history | grep "${@:2}"
+    echo ZSH
+    sudo cat /home/*/.zsh_history | grep "${@:2}"
   fi
   while [ $# -gt 0 ]
   do
