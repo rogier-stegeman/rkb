@@ -48,3 +48,14 @@ e.g.
 sudo ln -s /home/vg-ws03/Downloads/apache-jmeter-5.1.1/bin/jmeter.sh /usr/local/bin/jmeter
 jmeter
 ```
+
+Replace regex matches in file:
+```bash
+sed -i "s/[PATTERN]/[REPLACEMENT]/[FLAGS]" [FILEPATH]
+# e.g. replace all `${myurl}` with a specific link:
+sed -i "s/\${myurl}/http:\/\/192.168.1.666:80/g" nginx.conf
+# Note that regex characters and the seperator sign are escaped.
+# You can also choose a different seperator sign:
+sed -i "s|\${myurl}|http://192.168.1.666:80|g" nginx.conf
+sed -i "s:\${myurl}:http://192.168.1.666:80:g" nginx.conf
+```
