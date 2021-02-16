@@ -131,6 +131,7 @@ alias cd..="cd .."
 alias fd=fdfind
 alias py="python3"
 alias python="python3"
+alias stpy='export startimports="import datetime; import json; import os; import random; import sys; import time; import numpy as np; import pandas as pd; import requests" && echo $startimports | sed -r "s<; <\n<g" && python -i -c $startimports'
 alias pick="pick-colour-picker"
 alias "code."="code ."
 alias "code. -d"="code . && exit"
@@ -419,11 +420,11 @@ function rgr {
   elif [[ "$1" == "du" ]]; then
     du -sh * | sort -rh
   elif [[ "$1" == "venv" ]]; then
-    if [ -d "./venv" ]; then
-      source ./venv/bin/activate
+    if [ -d "/venv" ]; then
+      source /venv/bin/activate
     else
       python -m virtualenv venv
-      source ./venv/bin/activate
+      source /venv/bin/activate
     fi
   elif [[ "$1" == "spy" ]]; then
     echo BASH
