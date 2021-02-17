@@ -1,5 +1,5 @@
 echo Welcome back Commander! o7
-echo RKB .zshrc Version 1.0.2
+echo RKB .zshrc Version 1.0.3
 
 if [[ -o interactive ]]; then
   if [ -f "/tmp/daily-fortune.txt" ]; then
